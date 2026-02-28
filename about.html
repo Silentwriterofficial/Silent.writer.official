@@ -8,7 +8,14 @@
 </head>
 <body>
     <button class="menu-toggle" id="menuToggle">☰</button>
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
 
+menuToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+});
+</script>
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <h1>Silent.writer.official</h1>
@@ -67,6 +74,7 @@
 </body>
 
 </html>
+
 
 
 
