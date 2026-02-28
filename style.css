@@ -499,4 +499,20 @@ main {
         padding: 80px 20px;
     }
 }
+.like-box{
+    corsor:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:15px;
+}
+.like-btn{
+    cursor:pointer;
+    border:none;
+    background:transparent;
+    font-size:24px;
+}
+.like-count{
+    font-size:18px;
+}
 
