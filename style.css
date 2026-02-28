@@ -476,6 +476,7 @@ main {
 
     .menu-toggle {
         display: block;
+        z-index: 2000;
     }
 
     .sidebar {
@@ -485,7 +486,7 @@ main {
         width: 280px;
         height: 100%;
         transition: left 0.3s ease;
-        z-index: 1000;
+        z-index: 1500;
     }
 
     .sidebar.active {
@@ -498,3 +499,4 @@ main {
         padding: 80px 20px;
     }
 }
+
