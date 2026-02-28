@@ -404,4 +404,25 @@ main {
     font-size: 18px;
     line-height: 2;
     margin: 0;
+
+}
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+@media (max-width: 768px) {
+
+    .sidebar {
+        position: relative;   /* убираем fixed */
+        width: 100%;          /* на всю ширину */
+        height: auto;
+        text-align: center;
+    }
+
+    main {
+        margin-left: 0;       /* убираем отступ */
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    .poem-card {
+        max-width: 100%;
+    }
 }
