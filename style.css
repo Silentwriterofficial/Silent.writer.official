@@ -406,24 +406,54 @@ main {
     margin: 0;
 
 }
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
-@media (max-width: 768px) {
+/* ===== MOBILE MENU BUTTON ===== */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    z-index: 1001;
+    cursor: pointer;
+}
 
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+
+    /* Показываем кнопку */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Sidebar становится выезжающим */
     .sidebar {
-        position: relative;   /* убираем fixed */
-        width: 100%;          /* на всю ширину */
-        height: auto;
-        text-align: center;
+        position: fixed;
+        left: -380px; /* спрятан */
+        top: 0;
+        width: 280px;
+        height: 100%;
+        transition: left 0.3s ease;
+        z-index: 1000;
     }
 
+    .sidebar.active {
+        left: 0; /* появляется */
+    }
+
+    /* Контент на всю ширину */
     main {
-        margin-left: 0;       /* убираем отступ */
+        margin-left: 0;
         width: 100%;
-        padding: 40px 20px;
+        padding: 80px 20px;
     }
 
+    /* Карточки чуть компактнее */
     .poem-card {
         max-width: 100%;
+        padding: 25px;
     }
 
-
+}
