@@ -95,10 +95,50 @@
         const supabaseKey = 'sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y';
 
         const supabase = window.supabase.createClient (supabaseUrl, supabaseKey);
+        async function loadLikes(poemId) {
+    const { data, error } = await supabase
+      .from("poems")
+      .select("likes")
+      .eq("id", poemId)
+      .single();
+
+    if (error) {
+      console.error("loadLikes error:", error);
+      return;
+    }
+
+    const el = document.querySelector(`.like-count[data-poem-id="${poemId}"]`);
+    if (el) el.textContent = data.likes ?? 0;
+  }
+
+  async function addLike(poemId) {
+    // атомарное увеличение лайков
+    const { data, error } = await supabase.rpc("increment_likes", { poem_id: poemId });
+
+    if (error) {
+      console.error("addLike error:", error);
+      alert("Не удалось поставить лайк. Проверь RLS/функцию increment_likes.");
+      return;
+    }
+
+    const el = document.querySelector(`.like-count[data-poem-id="${poemId}"]`);
+    if (el) el.textContent = data;
+  }
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".like-btn");
+    if (!btn) return;
+    addLike(btn.dataset.poemId);
+  });
+
+  // загрузить лайки при открытии
+  document.querySelectorAll(".like-count").forEach(el => loadLikes(el.dataset.poemId));
+</script>
     </script>
 </body>
 
 </html>
+
 
 
 
