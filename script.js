@@ -22,3 +22,9 @@ end;
 $$;
 
 grant execute on function public.increment_likes(text) to anon;
+
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("like-btn")) {
+    alert("Кнопка работает");
+  }
+});
