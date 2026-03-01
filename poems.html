@@ -104,72 +104,79 @@
          
     </article>
 </main>
-<script src="script.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-  const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
-  const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
+const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
+// загрузка лайков
 async function loadLikes() {
-const buttons = document.querySelectorAll(".like-btn");
+  const buttons = document.querySelectorAll(".like-btn");
 
-for (const btn of buttons) {
-const id = btn.dataset.poemId;
+  for (const btn of buttons) {
+    const id = btn.dataset.poemId;
 
-let { data } = await supabaseClient
-.from("poems")
-.select("likes")
-.eq("id", id)
-.single();
+    let { data } = await supabaseClient
+      .from("likes")
+      .select("*")
+      .eq("id", id)
+      .single();
 
-if (data) {
-btn.nextElementSibling.textContent = data.likes;
-}
-}
+    if (!data) {
+      await supabaseClient
+        .from("likes")
+        .insert([{ id: id, count: 0 }]);
+
+      btn.nextElementSibling.textContent = 0;
+    } else {
+      btn.nextElementSibling.textContent = data.count;
+    }
+  }
 }
 
 // лайк
 async function addLike(id, btn) {
-if (localStorage.getItem("liked_" + id)) {
-btn.disabled = true;
-btn.textContent = "♥ Уже лайкнуто";
-return;
-}
 
-let { data } = await supabaseClient
-.from("poems")
-.select("likes")
-.eq("id", id)
-.single();
+  if (localStorage.getItem("liked_" + id)) {
+    btn.disabled = true;
+    btn.textContent = "♥ Уже лайкнуто";
+    return;
+  }
 
-const newCount = (data?.likes || 0) + 1;
+  let { data } = await supabaseClient
+    .from("likes")
+    .select("*")
+    .eq("id", id)
+    .single();
 
-await supabaseClient
-.from("poems")
-.update({ likes: newCount })
-.eq("id", id);
+  const newCount = (data?.count || 0) + 1;
 
-btn.nextElementSibling.textContent = newCount;
+  await supabaseClient
+    .from("likes")
+    .upsert({ id: id, count: newCount });
 
-localStorage.setItem("liked_" + id, true);
-btn.textContent = "♥ Спасибо";
-btn.disabled = true;
+  btn.nextElementSibling.textContent = newCount;
+
+  localStorage.setItem("liked_" + id, true);
+  btn.textContent = "♥ Спасибо";
+  btn.disabled = true;
 }
 
 document.querySelectorAll(".like-btn").forEach(btn => {
-btn.addEventListener("click", () => {
-addLike(btn.dataset.poemId, btn);
-});
+  btn.addEventListener("click", () => {
+    addLike(btn.dataset.poemId, btn);
+  });
 });
 
 loadLikes();
 </script>
-</script> 
 
 </body>
 
 </html>
+
 
 
 
