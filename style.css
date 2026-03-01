@@ -515,4 +515,16 @@ main {
 .like-count{
     font-size:18px;
 }
+.like-box {
+  position: relative;
+  z-index: 10;
+}
+
+.like-btn {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+
 
