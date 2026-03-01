@@ -97,7 +97,7 @@
         </pre>
     </article>
 </main>
-
+<script src="script.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
@@ -105,38 +105,31 @@
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
   async function loadLikes(poemId) {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("poems")
       .select("likes")
       .eq("id", poemId)
       .single();
 
+      document.querySelector(`.like-count[data-poem-id="${poemId}"]`).textContent = data?.likes ?? 0;
+      ansync function addLikes(poemId) {
+          const { data, error} = await supabase.rpc("increment_likes", {poem_id: poemId });
+          
+          
     if (error) {
-      console.error("loadLikes error:", error);
+      console.error(errror);
+        alter("loadLikes error:");
       return;
     }
 
-    const el = document.querySelector(`.like-count[data-poem-id="${poemId}"]`);
-    if (el) el.textContent = data.likes ?? 0;
+     document.querySelector(`.like-count[data-poem-id="${poemId}"]`).textContent =data;
+   
   }
 
-  async function addLike(poemId) {
-    const { data, error } = await supabase.rpc("increment_likes", { poem_id: poemId });
-
-    if (error) {
-      console.error("addLike error:", error);
-      alert("Не удалось поставить лайк. Проверь RLS/функцию increment_likes.");
-      return;
-    }
-
-    const el = document.querySelector(`.like-count[data-poem-id="${poemId}"]`);
-    if (el) el.textContent = data;
-  }
-
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".like-btn");
-    if (!btn) return;
+  document.addEventListener(".like-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
     addLike(btn.dataset.poemId);
+  });
   });
 
   document.querySelectorAll(".like-count").forEach(el => loadLikes(el.dataset.poemId));
@@ -145,6 +138,7 @@
 </body>
 
 </html>
+
 
 
 
