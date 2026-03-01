@@ -37,10 +37,10 @@
 
 𝑺𝑰𝑳𝑬𝑵𝑻 𝑾𝑹𝑰𝑻𝑬𝑹 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳
         </pre>
-<div class="like-box">
-        <button class="like-btn" data-poem-id="poem1" type="button">🤍 </button>
-        <span class="like-count" data-poem-id="poem1">0</span>
-    </div>
+<div class="like-row">
+  <button class="like-btn" data-poem-id="poem-1">♥ Нравится</button>
+  <span class="like-count" data-poem-count="poem-1">0</span>
+</div>
         
     </article>
 
@@ -57,9 +57,9 @@
 𝑺𝑰𝑳𝑬𝑵𝑻 𝑾𝑹𝑰𝑻𝑬𝑹 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳
         </pre>
 
-        <div class="like-box">
-        <button class="like-btn" data-poem-id="poem1" type="button">🤍 </button>
-        <span class="like-count" data-poem-id="poem1">0</span>
+       <div class="like-row">
+  <button class="like-btn" data-poem-id="poem-2">♥ Нравится</button>
+  <span class="like-count" data-poem-count="poem-2">0</span>
     </div>
     </article>
 
@@ -75,10 +75,11 @@
 𝑺𝑰𝑳𝑬𝑵𝑻 𝑾𝑹𝑰𝑻𝑬𝑹 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳
         </pre>
 
-        <div class="like-box">
-        <button class="like-btn" data-poem-id="poem1" type="button">🤍 </button>
-        <span class="like-count" data-poem-id="poem1">0</span>
-    </div>
+        <div class="like-row">
+  <button class="like-btn" data-poem-id="poem-3">♥ Нравится</button>
+  <span class="like-count" data-poem-count="poem-3">0</span>
+</div>
+
     </article>
 
      <article class="poem-card">
@@ -95,6 +96,12 @@
 
 𝑺𝑰𝑳𝑬𝑵𝑻 𝑾𝑹𝑰𝑻𝑬𝑹 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳
         </pre>
+<div class="like-row">
+  <button class="like-btn" data-poem-id="poem-4">♥ Нравится</button>
+  <span class="like-count" data-poem-count="poem-4">0</span>
+</div>
+
+         
     </article>
 </main>
 <script src="script.js"></script>
@@ -102,42 +109,68 @@
 <script>
   const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
   const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
-  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-  async function loadLikes(poemId) {
-    const { data } = await supabase
-      .from("poems")
-      .select("likes")
-      .eq("id", poemId)
-      .single();
+async function loadLikes() {
+const buttons = document.querySelectorAll(".like-btn");
 
-      document.querySelector(`.like-count[data-poem-id="${poemId}"]`).textContent = data?.likes ?? 0;
-      ansync function addLikes(poemId) {
-          const { data, error} = await supabase.rpc("increment_likes", {poem_id: poemId });
-          
-          
-    if (error) {
-      console.error(errror);
-        alter("loadLikes error:");
-      return;
-    }
+for (const btn of buttons) {
+const id = btn.dataset.poemId;
 
-     document.querySelector(`.like-count[data-poem-id="${poemId}"]`).textContent =data;
-   
-  }
+let { data } = await supabaseClient
+.from("poems")
+.select("likes")
+.eq("id", id)
+.single();
 
-  document.addEventListener(".like-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-    addLike(btn.dataset.poemId);
-  });
-  });
+if (data) {
+btn.nextElementSibling.textContent = data.likes;
+}
+}
+}
 
-  document.querySelectorAll(".like-count").forEach(el => loadLikes(el.dataset.poemId));
+// лайк
+async function addLike(id, btn) {
+if (localStorage.getItem("liked_" + id)) {
+btn.disabled = true;
+btn.textContent = "♥ Уже лайкнуто";
+return;
+}
+
+let { data } = await supabaseClient
+.from("poems")
+.select("likes")
+.eq("id", id)
+.single();
+
+const newCount = (data?.likes || 0) + 1;
+
+await supabaseClient
+.from("poems")
+.update({ likes: newCount })
+.eq("id", id);
+
+btn.nextElementSibling.textContent = newCount;
+
+localStorage.setItem("liked_" + id, true);
+btn.textContent = "♥ Спасибо";
+btn.disabled = true;
+}
+
+document.querySelectorAll(".like-btn").forEach(btn => {
+btn.addEventListener("click", () => {
+addLike(btn.dataset.poemId, btn);
+});
+});
+
+loadLikes();
+</script>
 </script> 
 
 </body>
 
 </html>
+
 
 
 
