@@ -281,63 +281,72 @@
 const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
 const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-// загрузка лайков
+// загрузка текущих лайков
 async function loadLikes() {
   const buttons = document.querySelectorAll(".like-btn");
 
   for (const btn of buttons) {
-    const id = btn.dataset.poemId;
+    const poemId = btn.dataset.poemId;
 
-    let { data } = await supabaseClient
-      .from("likes")
-      .select("*")
-      .eq("id", id)
+    const { data, error } = await supabaseClient
+      .from("poems")
+      .select("likes")
+      .eq("id", poemId)
       .single();
 
-    if (!data) {
-      await supabaseClient
-        .from("likes")
-        .insert([{ id: id, count: 0 }]);
-
-      btn.nextElementSibling.textContent = 0;
-    } else {
-      btn.nextElementSibling.textContent = data.count;
+    if (!error && data) {
+      const countEl = document.querySelector(`[data-poem-count="${poemId}"]`);
+      if (countEl) countEl.textContent = data.likes ?? 0;
     }
   }
 }
 
 // лайк
-async function addLike(id, btn) {
+async function addLike(poemId, btn) {
+  const localKey = "liked_" + poemId;
 
-  if (localStorage.getItem("liked_" + id)) {
+  // защита от повторного лайка на одном устройстве
+  if (localStorage.getItem(localKey)) {
     btn.disabled = true;
-    btn.textContent = "♥ Уже лайкнуто";
+    btn.classList.add("liked");
+    btn.querySelector(".heart").textContent = "♥";
     return;
   }
 
-  let { data } = await supabaseClient
-    .from("likes")
-    .select("*")
-    .eq("id", id)
-    .single();
+  const { data, error } = await supabaseClient.rpc("increment_likes", {
+    poem_id: poemId
+  });
 
-  const newCount = (data?.count || 0) + 1;
+  if (error) {
+    console.error("Ошибка лайка:", error);
+    alert("Не удалось поставить лайк");
+    return;
+  }
 
-  await supabaseClient
-    .from("likes")
-    .upsert({ id: id, count: newCount });
+  const countEl = document.querySelector(`[data-poem-count="${poemId}"]`);
+  if (countEl) countEl.textContent = data;
 
-  btn.nextElementSibling.textContent = newCount;
-
-  localStorage.setItem("liked_" + id, true);
-  btn.textContent = "♥ Спасибо";
+  localStorage.setItem(localKey, "true");
   btn.disabled = true;
+  btn.classList.add("liked");
+  btn.querySelector(".heart").textContent = "♥";
 }
 
+// навешиваем обработчики
 document.querySelectorAll(".like-btn").forEach(btn => {
+  const poemId = btn.dataset.poemId;
+  const localKey = "liked_" + poemId;
+
+  if (localStorage.getItem(localKey)) {
+    btn.disabled = true;
+    btn.classList.add("liked");
+    btn.querySelector(".heart").textContent = "♥";
+  }
+
   btn.addEventListener("click", () => {
-    addLike(btn.dataset.poemId, btn);
+    addLike(poemId, btn);
   });
 });
 
@@ -347,6 +356,7 @@ loadLikes();
 </body>
 
 </html>
+
 
 
 
