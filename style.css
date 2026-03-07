@@ -499,32 +499,54 @@ main {
         padding: 80px 20px;
     }
 }
-.like-box{
-    corsor:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-top:15px;
-}
-.like-btn{
-    cursor:pointer;
-    border:none;
-    background:transparent;
-    font-size:24px;
-}
-.like-count{
-    font-size:18px;
-}
-.like-box {
-  position: relative;
-  z-index: 10;
+/* ===== ЛАЙКИ ===== */
+.like-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .like-btn {
-  position: relative;
-  z-index: 20;
-  pointer-events: auto;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #eaeaea;
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
+.like-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.30);
+}
 
+.like-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
 
+.heart {
+    font-size: 20px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.like-btn.liked .heart {
+    color: #ff4d6d;
+    transform: scale(1.15);
+}
+
+.like-text {
+    font-size: 16px;
+}
+
+.like-count {
+    font-size: 16px;
+    color: #dcdcdc;
+}
