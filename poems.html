@@ -310,11 +310,11 @@
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
 const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
 
 // загрузка текущих лайков
 async function loadLikes() {
@@ -340,7 +340,6 @@ async function loadLikes() {
 async function addLike(poemId, btn) {
   const localKey = "liked_" + poemId;
 
-  // защита от повторного лайка на одном устройстве
   if (localStorage.getItem(localKey)) {
     btn.disabled = true;
     btn.classList.add("liked");
@@ -367,7 +366,6 @@ async function addLike(poemId, btn) {
   btn.querySelector(".heart").textContent = "♥";
 }
 
-// навешиваем обработчики
 document.querySelectorAll(".like-btn").forEach(btn => {
   const poemId = btn.dataset.poemId;
   const localKey = "liked_" + poemId;
@@ -383,12 +381,18 @@ document.querySelectorAll(".like-btn").forEach(btn => {
   });
 });
 
+localStorage.removeItem("liked_poem-1");
+localStorage.removeItem("liked_poem-2");
+localStorage.removeItem("liked_poem-3");
+localStorage.removeItem("liked_poem-4");
+
 loadLikes();
 </script>
 
 </body>
 
 </html>
+
 
 
 
