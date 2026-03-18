@@ -74,11 +74,36 @@ const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+async function loadQuoteLikes(id) {
+    const { data, error } = await supabase
+        .from("quotes")
+        .select("likes")
+        .eq("id", id)
+        .single();
+
+    if (error) {
+        console.error("Ошибка загрузки лайков цитаты:", error);
+        return;
+    }
+
+    const countEl = document.querySelector(`.quote-like-count[data-id="${id}"]`);
+    const btn = document.querySelector(`.quote-like-btn[data-id="${id}"]`);
+
+    if (countEl) countEl.textContent = data?.likes ?? 0;
+
+    if (localStorage.getItem("liked_quote_" + id)) {
+        if (btn) {
+            btn.textContent = "♥";
+            btn.disabled = true;
+            btn.classList.add("liked");
+        }
+    }
+}
+
 async function addQuoteLike(id) {
     const likedKey = "liked_quote_" + id;
 
     if (localStorage.getItem(likedKey)) {
-        alert("Ты уже ставила лайк этой цитате");
         return;
     }
 
@@ -94,10 +119,16 @@ async function addQuoteLike(id) {
 
     localStorage.setItem(likedKey, "true");
 
-    const el = document.querySelector(`.quote-like-count[data-id="${id}"]`);
-    if (el) el.textContent = data;
-}
+    const countEl = document.querySelector(`.quote-like-count[data-id="${id}"]`);
+    const btn = document.querySelector(`.quote-like-btn[data-id="${id}"]`);
 
+    if (countEl) countEl.textContent = data;
+    if (btn) {
+        btn.textContent = "♥";
+        btn.disabled = true;
+        btn.classList.add("liked");
+    }
+}
 
 document.addEventListener("click", function(e) {
     const btn = e.target.closest(".quote-like-btn");
