@@ -29,42 +29,93 @@
     <article class="poem-card">
         <h3>Цитата 1</h3>
         <pre>
-«Мудрый человек обиду глотает,
-изъяв урок — в опыт и знание.»
+Мудрый человек обиду глотает,
+изъяв урок — в опыт и знание.
         </pre>
-        <script>
-<div class="like-box">
-    <button class="quote-like-btn" data-id="quote1">❤️</button>
-    <span class="quote-like-count" data-id="quote1">0</span>
-</div>
+
+        <div class="like-box">
+            <button class="quote-like-btn" data-id="quote1" type="button">❤️</button>
+            <span class="quote-like-count" data-id="quote1">0</span>
+        </div>
     </article>
 
     <article class="poem-card">
         <h3>Цитата 2</h3>
         <pre>
-«Сегодня любят не поступками,
-а лишь словами.»
+Сегодня любят не поступками,
+а лишь словами.
         </pre>
-    <div class="like-box">
-    <button class="quote-like-btn" data-id="quote2">❤️</button>
-    <span class="quote-like-count" data-id="quote2">0</span>
-</div>
+
+        <div class="like-box">
+            <button class="quote-like-btn" data-id="quote2" type="button">❤️</button>
+            <span class="quote-like-count" data-id="quote2">0</span>
+        </div>
     </article>
 
     <article class="poem-card">
         <h3>Цитата 3</h3>
         <pre>
-«Лишь в людях встретить можно
-священное и зло.»
+Лишь в людях встретить можно
+священное и зло.
         </pre>
-    <div class="like-box">
-    <button class="quote-like-btn" data-id="quote3">❤️</button>
-    <span class="quote-like-count" data-id="quote3">0</span>
-</div>
-    </article>
 
+        <div class="like-box">
+            <button class="quote-like-btn" data-id="quote3" type="button">❤️</button>
+            <span class="quote-like-count" data-id="quote3">0</span>
+        </div>
+    </article>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
+
+<script>
+const supabaseUrl = 'https://jiulxnhlhshbiwcjjadj.supabase.co';
+const supabaseKey = 'ТВОЙ_PUBLISHABLE_KEY';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+async function loadQuoteLikes(id) {
+    const { data, error } = await supabase
+        .from('quotes')
+        .select('likes')
+        .eq('id', id)
+        .single();
+
+    if (error) {
+        console.error('Ошибка загрузки лайков цитаты:', error);
+        return;
+    }
+
+    const el = document.querySelector(`.quote-like-count[data-id="${id}"]`);
+    if (el) el.textContent = data?.likes ?? 0;
+}
+
+async function addQuoteLike(id) {
+    const { data, error } = await supabase.rpc('increment_quote_likes', {
+        quote_id: id
+    });
+
+    if (error) {
+        console.error('Ошибка лайка цитаты:', error);
+        alert('Не удалось поставить лайк на цитату');
+        return;
+    }
+
+    const el = document.querySelector(`.quote-like-count[data-id="${id}"]`);
+    if (el) el.textContent = data;
+}
+
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.quote-like-btn');
+    if (!btn) return;
+
+    addQuoteLike(btn.dataset.id);
+});
+
+document.querySelectorAll('.quote-like-count').forEach(el => {
+    loadQuoteLikes(el.dataset.id);
+});
+</script>
+
 </body>
 </html>
