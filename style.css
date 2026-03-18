@@ -550,3 +550,33 @@ main {
     font-size: 16px;
     color: #dcdcdc;
 }
+
+.like-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.like-btn,
+.quote-like-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.2s ease;
+}
+
+.like-btn:hover,
+.quote-like-btn:hover {
+    transform: scale(1.15);
+}
+
+.like-count,
+.quote-like-count {
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
