@@ -74,23 +74,14 @@ const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-async function loadQuoteLikes(id) {
-    const { data, error } = await supabase
-        .from("quotes")
-        .select("likes")
-        .eq("id", id)
-        .single();
+async function addQuoteLike(id) {
+    const likedKey = "liked_quote_" + id;
 
-    if (error) {
-        console.error("Ошибка загрузки лайков цитаты:", error);
+    if (localStorage.getItem(likedKey)) {
+        alert("Ты уже ставила лайк этой цитате");
         return;
     }
 
-    const el = document.querySelector(`.quote-like-count[data-id="${id}"]`);
-    if (el) el.textContent = data?.likes ?? 0;
-}
-
-async function addQuoteLike(id) {
     const { data, error } = await supabase.rpc("increment_quote_likes", {
         quote_id: id
     });
@@ -101,9 +92,12 @@ async function addQuoteLike(id) {
         return;
     }
 
+    localStorage.setItem(likedKey, "true");
+
     const el = document.querySelector(`.quote-like-count[data-id="${id}"]`);
     if (el) el.textContent = data;
 }
+
 
 document.addEventListener("click", function(e) {
     const btn = e.target.closest(".quote-like-btn");
