@@ -413,16 +413,16 @@ main {
 .menu-toggle {
     display: none;
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 32px;
+    left: 16px;
     font-size: 26px;
-    background: rgba(0,0,0,0,6);
+    background: rgba(255,255,255,0.08);
     border: none;
     color: white;
     z-index: 9999;
     cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
 }
 
 /* ===== АДАПТИВ ===== */
@@ -431,12 +431,14 @@ main {
     /* Показываем кнопку */
     .menu-toggle {
         display: block;
+       
+       
     }
 
     /* Sidebar становится выезжающим */
     .sidebar {
         position: fixed;
-        left: -380px; /* спрятан */
+        left: -280px; /* спрятан */
         top: 0;
         width: 280px;
         height: 100%;
@@ -466,15 +468,15 @@ main {
 .menu-toggle {
     display: none;
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 18px;
+    left: 18px;
     font-size: 26px;
-    background: rgba (0,0,0,0.6);
+    background: rgba (255,255,255,0.08);
     border: none;
     color: white;
     z-index: 9999;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
     cursor: pointer;
 }
 
@@ -488,12 +490,12 @@ main {
 
     .sidebar {
         position: fixed;
-        left: -380px;
+        left: -280px;
         top: 0;
         width: 280px;
         height: 100%;
         transition: left 0.3s ease;
-        z-index: 1500;
+        z-index: 1000;
     }
 
     .sidebar.active {
