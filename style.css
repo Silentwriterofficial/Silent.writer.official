@@ -298,10 +298,16 @@ body {
     box-shadow: 2px 0 10px rgba(0,0,0,0.5);
 }
 
-.sidebar h1 {
-    margin-bottom: 30px;
-    font-size: 22px;
+.sidebar h1,
+.site-title {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    line-height: 1.3;
     text-align: center;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .sidebar nav a {
@@ -875,6 +881,13 @@ body {
     .about-btn {
         width: 100%;
         text-align: center;
+    }
+}
+@media (max-width: 900px) {
+    .sidebar h1,
+    .site-title {
+        font-size: 18px;
+        line-height: 1.35;
     }
 }
 
