@@ -909,7 +909,7 @@ body {
 .author-box {
     padding: 10px 5px;
     margin-bottom: 25px;
-    text-align: center;
+    text-align: left;
 }
 .author-box h1 {
     font-size: 22px;
