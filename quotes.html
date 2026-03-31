@@ -292,11 +292,11 @@
     
 </main>
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
 const supabaseUrl = "https://jiulxnhlhshbiwcjjadj.supabase.co";
 const supabaseKey = "sb_publishable_BTFHCv7F__3rNqN_pCSL3w_g7znAt8Y";
 
@@ -310,13 +310,13 @@ async function loadQuoteLikes() {
   for (const btn of buttons) {
     const quoteId = btn.dataset.id;
 
-    const { data, error } = await supabaseClient
+    const { data } = await supabaseClient
       .from("quotes")
       .select("likes")
       .eq("id", quoteId)
       .single();
 
-    if (!error && data) {
+    if (data) {
       const countEl = document.querySelector(`[data-quote-count="${quoteId}"]`);
       if (countEl) countEl.textContent = data.likes ?? 0;
     }
@@ -329,20 +329,14 @@ async function addQuoteLike(quoteId, btn) {
 
   const localKey = "liked_quote_" + quoteId;
 
-  if (localStorage.getItem(localKey)) {
-    btn.disabled = true;
-    btn.classList.add("liked");
-    btn.querySelector(".heart").textContent = "♥";
-    return;
-  }
+  if (localStorage.getItem(localKey)) return;
 
   const { data, error } = await supabaseClient.rpc("increment_quote_likes", {
     quote_id: quoteId
   });
 
   if (error) {
-    console.error("Ошибка лайка:", error);
-    alert("Не удалось поставить лайк");
+    alert("Ошибка лайка");
     return;
   }
 
@@ -351,7 +345,6 @@ async function addQuoteLike(quoteId, btn) {
 
   localStorage.setItem(localKey, "true");
 
-  btn.disabled = true;
   btn.classList.add("liked");
   btn.querySelector(".heart").textContent = "♥";
 }
@@ -364,7 +357,6 @@ document.querySelectorAll(".quote-like-btn").forEach(btn => {
   const localKey = "liked_quote_" + quoteId;
 
   if (localStorage.getItem(localKey)) {
-    btn.disabled = true;
     btn.classList.add("liked");
     btn.querySelector(".heart").textContent = "♥";
   }
@@ -377,6 +369,8 @@ document.querySelectorAll(".quote-like-btn").forEach(btn => {
 
 
 loadQuoteLikes();
+
+});
 </script>
 
 
