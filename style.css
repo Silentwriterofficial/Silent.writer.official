@@ -906,3 +906,17 @@ body {
     position: relative;
     z-index: 1;
 }
+.author-box {
+    margin-bottom: 25px;
+    text-align: center;
+}
+.author-box h1 {
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+.author-box p {
+    font-size: 13px;
+    color:#aaa;
+}
