@@ -907,16 +907,18 @@ body {
     z-index: 1;
 }
 .author-box {
+    padding: 10px 5px;
     margin-bottom: 25px;
     text-align: center;
 }
 .author-box h1 {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1.2;
-    margin-bottom: 5px;
+    margin: 0 0 8px;
     word-break: break-word;
 }
 .author-box p {
-    font-size: 13px;
-    color:#aaa;
+    margin: 0;
+    font-size: 14px;
+    color:#cfcfcf;
 }
