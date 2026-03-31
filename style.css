@@ -890,4 +890,19 @@ body {
         line-height: 1.35;
     }
 }
+.like-box,
+.like-row {
+    position: relative;
+    z-index: 20;
+}
 
+.quote-like-btn,
+.like-btn {
+    position: relative;
+    z-index: 21;
+    touch-action: manipulation;
+}
+.poem-card {
+    position: relative;
+    z-index: 1;
+}
