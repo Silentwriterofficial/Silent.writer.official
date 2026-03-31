@@ -2,30 +2,100 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Silent.writer.official — Автор стихов | Поэт Украины</title>
-    <meta name="description" content="Silent.writer.official — Автор стихов и поэт Украины. Публикации, стихи, официальный сайт и Instagram. Читайте лучшие тексты онлайн.">
-    <meta name="keywords" content="Silent.writer.official, автор стихов, поэт, стихи, поэзия, Украина, творчество">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Об авторе — Silent.writer.official | Автор стихов</title>
+    <meta name="description" content="Silent.writer.official — автор стихов и лирических текстов. Биография автора, творчество, официальный сайт, стихи и цитаты.">
+    <meta name="keywords" content="Silent.writer.official, автор стихов, поэт, стихи, цитаты, творчество, официальный сайт">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="Silent.writer.official">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Silent.writer.official — Автор стихов</h1>
 
-    <p><strong>Silent.writer.official</strong> — современный Автор и поэт из Украины, создающий стихи о жизни, чувствах и эмоциях. Его тексты сочетают лирическую глубину, яркие метафоры и современные образы, обращаясь к молодым читателям и всем ценителям поэзии.</p>
+    <!-- Кнопка меню для телефона -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
 
-    <h2>Биография</h2>
-    <p>Silent.writer.official родом из Украины. Уже с ранних лет проявлял интерес к литературе и поэзии, создавая тексты с уникальным стилем. Публикует свои стихи в интернете, активно ведет Instagram и официальный сайт.</p>
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
 
-    <h2>Публикации и достижения</h2>
-    <ul>
-        <li>Регулярные публикации стихов на официальном сайте и в Instagram</li>
-        <li>Авторские лирические тексты с яркими метафорами</li>
-        <li>Участие в онлайн-проектах по продвижению современной поэзии</li>
-    </ul>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <h1>Silent.writer.official</h1>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="poems.html">Стихи</a>
+            <a href="quotes.html">Цитаты</a>
+            <a href="about.html" class="active">Об авторе</a>
+            <a href="contact.html">Контакты</a>
+        </nav>
+    </aside>
 
-    <h2>Контакты и ссылки</h2>
-    <p>Официальный сайт: <a href="https://silentwriterofficial.github.io/">silentwriterofficial.github.io</a></p>
-    <p>Instagram: <a href="https://www.instagram.com/silent.writer.official/">silent.writer.official</a></p>
+    <!-- MAIN -->
+    <main class="main-content">
+        <section class="about-section">
+            <div class="about-card">
+                <h2>Об авторе</h2>
 
-    <p>Эта страница создана для официального представления автора в интернете, ускорения индексации в Google и упрощения поиска его творчества.</p>
+                <p>
+                    <strong>Silent.writer.official</strong> — современный автор стихов,
+                    создающий лирические и эмоциональные тексты о чувствах, жизни,
+                    внутренней тишине и переживаниях.
+                </p>
+
+                <p>
+                    Творчество автора объединяет искренность, меланхолию, философские
+                    размышления и тонкое восприятие мира. Основные темы стихов —
+                    любовь, одиночество, боль, надежда, память и душевная глубина.
+                </p>
+
+                <p>
+                    На официальном сайте <strong>Silent.writer.official</strong>
+                    публикуются стихи, цитаты и авторские тексты, отражающие личный
+                    стиль и атмосферу творчества.
+                </p>
+
+                <div class="about-info">
+                    <div class="info-box">
+                        <h3>Творчество</h3>
+                        <p>Лирические стихи, авторские цитаты, атмосферные тексты.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Темы</h3>
+                        <p>Чувства, одиночество, любовь, мысли, душевная глубина.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Официально</h3>
+                        <p>Личный сайт автора: стихи, страницы, публикации и контакты.</p>
+                    </div>
+                </div>
+
+                <div class="about-links">
+                    <a href="poems.html" class="about-btn">Читать стихи</a>
+                    <a href="quotes.html" class="about-btn">Смотреть цитаты</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        menuToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+    </script>
+
 </body>
 </html>
+  
