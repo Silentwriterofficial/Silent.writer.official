@@ -80,6 +80,18 @@ body {
 .logo:hover {
     transform: scale(1.05);
     box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    
+    .intro{
+        max-width: 600px;
+        margin: 0 auto 30px;
+        padding-left: 15px;
+        border-left: 2px solid rgda(255,255,255,0.2);
+    }
+    .intro p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #dcdcdc;
+    }
 }
 /* СТРАНИЦА "ОБ АВТОРЕ" */
 .about {
