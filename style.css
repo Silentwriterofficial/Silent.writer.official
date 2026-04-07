@@ -959,3 +959,6 @@ body {
     opacity: 0.7;
     line-height: 1.6;
 }
+,logo-text span {
+    display: block;
+}
