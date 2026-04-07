@@ -959,6 +959,11 @@ body {
     opacity: 0.7;
     line-height: 1.6;
 }
+.logo-text {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    line-height: 1.2;
+}
 .logo-text span {
     display: block;
 }
