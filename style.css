@@ -934,3 +934,28 @@ body {
     font-size: 14px;
     color:#cfcfcf;
 }
+.intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 60px auto 30px;
+    padding: 0 20px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 16px;
+    opacity: 0.7;
+    line-height: 1.6;
+}
