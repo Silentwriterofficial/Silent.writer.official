@@ -633,8 +633,11 @@ main{
 
 .logo{
 
-    width:190px;
-    height:190px;
+    width:320px;
+    height:320px;
+
+   display:block;
+   margin:45px auto;
 
 }
 
@@ -646,7 +649,9 @@ main{
 
 .title{
 
-    font-size:30px;
+    font-size:40px;
+   text-align:center;
+   line-height:1.1;
 
 }
 
@@ -658,7 +663,10 @@ main{
 
 .description{
 
-    font-size:16px;
+    font-size:22px;
+   line-height:1.8;
+   max-width:760px;
+   margin:auto;
 
 }
 
@@ -725,6 +733,135 @@ main{
 
 }
 
-}
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px)
+========================================== */
+
+@media (max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .main-content,
+    main{
+        padding:90px 22px 40px;
+    }
+
+    /* Заголовок */
+
+    h1,
+    .title{
+
+        font-size:56px;
+        line-height:1.05;
+        text-align:center;
+        margin-bottom:18px;
+
+    }
+
+    /* Подзаголовок */
+
+    .subtitle,
+    .description{
+
+        max-width:100%;
+        margin:0 auto 35px;
+
+        font-size:20px;
+        line-height:1.7;
+
+        text-align:center;
+
+    }
+
+    /* Фото */
+
+    .logo{
+
+        width:280px;
+        height:280px;
+
+        display:block;
+
+        margin:35px auto 45px;
+
+        border-radius:50%;
+
+        object-fit:cover;
+
+        box-shadow:0 15px 45px rgba(0,0,0,.45);
+
+    }
+
+    /* Секция */
+
+    .intro{
+
+        max-width:100%;
+
+        margin:0 auto 50px;
+
+        border:none;
+
+        padding:0;
+
+        text-align:center;
+
+    }
+
+    /* Заголовок "О сайте" */
+
+    h2{
+
+        font-size:42px;
+
+        text-align:center;
+
+        margin-bottom:18px;
+
+    }
+
+    .intro p,
+    .about-card p{
+
+        font-size:21px;
+
+        line-height:1.8;
+
+        text-align:center;
+
+        color:#ececec;
+
+    }
+
+    /* Карточки */
+
+    .poem-card,
+    .about-card,
+    .contact-card{
+
+        padding:28px 22px;
+
+        border-radius:22px;
+
+    }
+
+    /* Меню */
+
+    .menu-toggle{
+
+        top:22px;
+        right:22px;
+
+        width:64px;
+        height:64px;
+
+        font-size:34px;
+
+        border-radius:18px;
+
+    }
+
 
 
