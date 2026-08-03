@@ -648,6 +648,11 @@ body {
     margin-bottom: 40px;
     line-height: 1.2;
     text-align: left;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
 }
 
 .sidebar nav {
