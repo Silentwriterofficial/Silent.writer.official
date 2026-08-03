@@ -692,8 +692,10 @@ main{
 
 .logo{
 
-    width:160px;
-    height:160px;
+    width:260px;
+    height:260px;
+
+    margin-bottom:35px;
 
 }
 
@@ -701,11 +703,27 @@ main{
 
     font-size:21px;
 
+    margin-bottom:25px;
+
 }
 
 .title{
 
     font-size:26px;
+
+}
+
+.subtitle{
+
+    font-size:18px;
+
+}
+
+.description{
+
+    font-size:16px;
+
+}
 
 }
 
