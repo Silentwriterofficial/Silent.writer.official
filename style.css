@@ -2628,3 +2628,52 @@ main{
     }
 
 }
+/* =========================
+   ФИКС ГЛАВНОЙ СТРАНИЦЫ МОБИЛА
+========================= */
+
+@media (max-width:900px){
+
+    .home {
+
+        min-height:100vh;
+
+        display:flex;
+
+        align-items:flex-start;
+
+        justify-content:center;
+
+        padding-top:90px;
+
+    }
+
+
+    .hero {
+
+        width:100%;
+
+        max-width:500px;
+
+        padding:0 20px;
+
+        margin:0 auto;
+
+    }
+
+
+    .logo {
+
+        margin:20px auto 30px;
+
+    }
+
+
+    .quote {
+
+        margin-top:20px;
+
+    }
+
+}
+   
