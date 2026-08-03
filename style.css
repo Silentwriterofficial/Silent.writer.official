@@ -880,4 +880,45 @@ main{
     height:1px;
     background:rgba(255,255,255,.35);
 }
+/* ==========================
+   ДЕКОРАТИВНЫЕ РАЗДЕЛИТЕЛИ
+========================== */
 
+.ornament{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:16px;
+
+    margin:30px auto;
+
+}
+
+.ornament span{
+
+    width:120px;
+
+    height:1px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+}
+
+.ornament-center{
+
+    font-size:28px;
+
+    color:#d8d8d8;
+
+    text-shadow:0 0 8px rgba(255,255,255,.35);
+
+}
