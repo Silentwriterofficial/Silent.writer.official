@@ -704,12 +704,14 @@ body {
     backdrop-filter: blur(10px);
     animation: fadeInUp 0.8s ease;
 }
-
 .about-card h2 {
-    font-size: 42px;
-    margin-bottom: 24px;
+    font-size: clamp(26px, 6vw, 42px);
+    line-height: 1.2;
     text-align: center;
-    color: #ffffff;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 }
 
 .about-card p {
@@ -972,3 +974,27 @@ body {
 .logo-text span {
     display: block;
 }
+@media (max-width: 900px) {
+
+    .about-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 18px;
+    }
+
+    .about-card h2 {
+        font-size: clamp(24px, 7vw, 34px);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .about-gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .about-gallery img {
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
