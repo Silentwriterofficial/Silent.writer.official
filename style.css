@@ -1,6 +1,609 @@
-/* =========================
-   БАЗОВЫЕ СТИЛИ
-========================= */
+/* ОБЩИЕ СТИЛИ */
+body {
+    margin: 0;
+    display: flex;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 400px;
+    height: 100vh;
+    background-color: #0d0d0d;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h1 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+/* МЕНЮ */
+.sidebar nav a {
+    display: block;
+    color: #bdbdbd;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 18px 0;
+    padding-left: 0;
+    transition: 
+        color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+/* АНИМАЦИЯ ПРИ НАВЕДЕНИИ */
+.sidebar nav a:hover {
+    color: #ffffff;
+    padding-left: 12px;
+}
+
+/* ГЛАВНЫЙ ЭКРАН */
+.home {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ЦЕНТРАЛЬНЫЙ БЛОК */
+.hero {
+    text-align: center;
+}
+
+/* ЦИТАТА */
+.quote {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 28px;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    color: #dcdcdc;
+}
+
+/* ФОТО */
+.logo {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    
+    .intro{
+        max-width: 600px;
+        margin: 0 auto 30px;
+        padding-left: 15px;
+        border-left: 2px solid rgda(255,255,255,0.2);
+    }
+    .intro p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #dcdcdc;
+    }
+}
+/* СТРАНИЦА "ОБ АВТОРЕ" */
+.about {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+
+/* ===== ГАЛЕРЕЯ АВТОРА ===== */
+.about-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.about-gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    opacity: 0.85;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.about-gallery img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* КАРТОЧКА */
+.about-card {
+    max-width: 600px;
+    background-color: #181818;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+/* ЗАГОЛОВОК */
+.about-card h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* ТЕКСТ */
+.about-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #d0d0d0;
+}
+
+/* ЦИТАТА */
+.about-card blockquote {
+    margin-top: 30px;
+    padding-left: 20px;
+    border-left: 3px solid #444;
+    font-style: italic;
+    color: #bdbdbd;
+}
+
+/* СТРАНИЦА "КОНТАКТЫ" */
+.contact {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* КАРТОЧКА */
+.contact-card {
+    background-color: #181818;
+    padding: 40px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+/* ЗАГОЛОВОК */
+.contact-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* ТЕКСТ */
+.contact-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #bdbdbd;
+}
+
+/* ССЫЛКИ */
+.social-links a {
+    display: block;
+    font-size: 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    margin: 16px 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* СТРАНИЦА "КОНТАКТЫ" */
+.contact {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* КАРТОЧКА */
+.contact-card {
+    background-color: #181818;
+    padding: 40px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+/* ЗАГОЛОВОК */
+.contact-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+/* ТЕКСТ */
+.contact-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #bdbdbd;
+}
+
+/* ССЫЛКИ */
+.social-links a {
+    display: block;
+    font-size: 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    margin: 16px 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* СТРАНИЦА "КОНТАКТЫ" */
+.contact {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* КАРТОЧКА */
+.contact-card {
+    background-color: #181818;
+    padding: 40px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+/* ЗАГОЛОВОК */
+.contact-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* ТЕКСТ */
+.contact-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #bdbdbd;
+}
+
+/* ССЫЛКИ */
+.social-links a {
+    display: block;
+    font-size: 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    margin: 16px 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* АНИМАЦИЯ ПРИ НАВЕДЕНИИ */
+.social-links a:hover {
+    transform: translateX(10px);
+    color: #ffffff;
+}
+
+/* ===== SIDEBAR FIXED ===== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 100%;
+    background-color: #181818;
+    color: #ebebeb;
+    padding: 40px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.sidebar h1,
+.site-title {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    line-height: 1.3;
+    text-align: center;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.sidebar nav a {
+    display: block;
+    color: #ebebeb;
+    text-decoration: none;
+    margin-bottom: 18px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.sidebar nav a:hover {
+    color: #ffffff;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+    margin-left: 220px;
+    width:calc(100% - 200px);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items:center; /* Все стихотворения по центру */
+}
+
+/* Заголовок */
+.poems-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #f0f0f0;
+}
+
+/* Карточка стиха — по центру */
+.poem-card {
+    width: 100%;
+    max-width: 600px;       /* ограничиваем ширину */
+    background: rgba(25,25,25,0.9);
+    padding: 40px;
+    margin-bottom: 0 auto 50px auto;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp 0.8s ease forwards;
+    text-align: center;     /* текст внутри по центру */
+}
+
+/* Анимация появления */
+.poem-card:nth-child(1) { animation-delay: 0.2s; }
+.poem-card:nth-child(2) { animation-delay: 0.4s; }
+.poem-card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 380px;        /* ТВОЯ ширина */
+    height: 100vh;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+main {
+    margin-left: 380px;              /* отступ ровно под sidebar */
+    width: calc(100% - 380px);       /* оставшаяся ширина */
+    display: flex;
+    flex-direction: column;
+    align-items: center;             /* центрируем содержимое */
+    padding: 60px 20px;
+}
+
+/* Карточка стиха */
+.poem-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 650px;                /* ограничиваем ширину */
+    background: rgba(25,25,25,0.9);
+    padding: 40px;
+    margin-bottom: 50px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    text-align: center;
+
+}
+
+/* Текст */
+.poem-card pre {
+    white-space: pre-wrap;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 2;
+    margin: 0;
+}
+/* ===== MOBILE MENU BUTTON ===== */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 32px;
+    left: 16px;
+    font-size: 26px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: white;
+    z-index: 9999;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 12px;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+
+    /* Показываем кнопку */
+    .menu-toggle {
+        display: block;
+       
+       
+    }
+
+    /* Sidebar становится выезжающим */
+    .sidebar {
+        position: fixed;
+        left: -280px; /* спрятан */
+        top: 0;
+        width: 280px;
+        height: 100%;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        left: 0; /* появляется */
+    }
+
+    /* Контент на всю ширину */
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 80px 20px;
+    }
+
+    /* Карточки чуть компактнее */
+    .poem-card {
+        max-width: 100%;
+        padding: 25px;
+    }
+
+}
+/* КНОПКА МЕНЮ */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    font-size: 26px;
+    background: rgba (255,255,255,0.08);
+    border: none;
+    color: white;
+    z-index: 9999;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: block;
+        z-index: 2000;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        width: 280px;
+        height: 100%;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 80px 20px;
+    }
+}
+/* ===== ЛАЙКИ ===== */
+.like-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.like-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #eaeaea;
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.like-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.30);
+}
+
+.like-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.heart {
+    font-size: 20px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.like-btn.liked .heart {
+    color: #ff4d6d;
+    transform: scale(1.15);
+}
+
+.like-text {
+    font-size: 16px;
+}
+
+.like-count {
+    font-size: 16px;
+    color: #dcdcdc;
+}
+
+.like-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.like-btn,
+.quote-like-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.2s ease;
+}
+
+.like-btn:hover,
+.quote-like-btn:hover {
+    transform: scale(1.15);
+}
+
+.like-count,
+.quote-like-count {
+    font-size: 18px;
+    color: #e0e0e0;
+}
 
 * {
     margin: 0;
@@ -11,141 +614,32 @@
 body {
     font-family: Georgia, "Times New Roman", serif;
     background:
-        radial-gradient(circle at top, rgba(255,255,255,.08) 1px, transparent 1px),
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.05) 1px, transparent 1px),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(135deg,#050816,#0b1023,#111936);
-    background-size: 180px 180px,220px 220px,250px 250px,cover;
-    color:#f2f2f2;
-    min-height:100vh;
-    overflow-x:hidden;
+        radial-gradient(circle at top, rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(135deg, #050816, #0b1023, #111936);
+    background-size: 180px 180px, 220px 220px, 250px 250px, cover;
+    color: #f2f2f2;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
-
-.sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-
-    width:320px;
-    height:100vh;
-
-    padding:50px 30px;
-
-    background:rgba(10,15,30,.95);
-    backdrop-filter:blur(14px);
-
-    border-right:1px solid rgba(255,255,255,.08);
-    box-shadow:0 0 30px rgba(0,0,0,.35);
-
-    z-index:1000;
-    transition:.35s ease;
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100%;
+    background: rgba(10, 15, 30, 0.94);
+    backdrop-filter: blur(14px);
+    padding: 50px 30px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 30px rgba(0,0,0,0.35);
+    z-index: 1000;
+    transition: transform 0.35s ease;
 }
-
-.sidebar h1,
-.site-title{
-
-    font-size:28px;
-    color:#fff;
-
-    line-height:1.25;
-    margin-bottom:40px;
-
-    overflow-wrap:anywhere;
-    word-break:break-word;
-}
-
-.sidebar nav{
-
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-
-}
-
-.sidebar nav a{
-
-    color:#d9dcef;
-    text-decoration:none;
-
-    font-size:18px;
-
-    transition:.3s;
-
-}
-
-.sidebar nav a:hover,
-.sidebar nav a.active{
-
-    color:#fff;
-    transform:translateX(6px);
-
-}
-
-/* =========================
-   ОСНОВНОЙ КОНТЕНТ
-========================= */
-
-.main-content,
-main{
-
-    margin-left:320px;
-
-    width:calc(100% - 320px);
-
-    min-height:100vh;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    padding:60px 25px;
-
-}
-
-/* =========================
-   КНОПКА МЕНЮ
-========================= */
-
-.menu-toggle{
-
-    display:none;
-
-    position:fixed;
-
-    top:18px;
-    right:18px;
-
-    width:52px;
-    height:52px;
-
-    border:none;
-    border-radius:14px;
-
-    background:rgba(18,24,44,.95);
-
-    color:#fff;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    z-index:1200;
-
-    transition:.3s;
-
-}
-
-.menu-toggle:hover{
-
-    transform:scale(1.05);
-
-}
-
-/* =========================
+   
    МОБИЛЬНАЯ ВЕРСИЯ
 ========================= */
 
